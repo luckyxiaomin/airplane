@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+<script>
+    window.onload=function(){
+        var cvs=document.getElementById("canvas");
+        var cxt=cvs.getContext("2d");
+        var i=0;
+        cxt.translate(600,500);//移动坐标轴到（500,300）
+        setInterval(function ()
+        {
+            cxt.clearRect(-600,-500,1366,2000);//清除画布（0,0）点在屏幕的（500,300）处
+           // var date=new Date();
+           // var sec=date.getSeconds();
+            ++i;
+            //太阳;
+            cxt.save();
+            cxt.beginPath();
+            var g1=cxt.createRadialGradient(0,0,30,0,0,60);
+            g1.addColorStop(0,"#ff9900");
+            g1.addColorStop(1,"#ffff00");
+            cxt.fillStyle=g1;
+            cxt.arc(0,0,60,0,360*Math.PI/180,false);
+            cxt.fill();
+            cxt.closePath();
+            cxt.restore();
+            //轨道
+            cxt.save();
+            cxt.beginPath();
+            cxt.strokeStyle="white";
+            cxt.arc(0,0,100,360*Math.PI/180,false);
+            cxt.stroke();
+            cxt.closePath();
+            cxt.restore();
+            //水星
+            cxt.save();
+            cxt.beginPath();
+            var g3=cxt.createRadialGradient(100,0,5,100,0,10);
+            g3.addColorStop(0,"#5c3e40");
+            g3.addColorStop(1,"#a69697");
+            cxt.rotate(i*6*Math.PI/180);
+            cxt.arc(100,0,10,0,360*Math.PI/180,false);
+            cxt.fillStyle=g3;
+            cxt.fill();
+         cxt.closePath();
+            cxt.restore();
+            //轨道
+            cxt.save();
+            cxt.beginPath();
+            cxt.strokeStyle="white";
+            cxt.arc(0,0,130,360*Math.PI/180,false);
+            cxt.stroke();
+            cxt.closePath();
+            cxt.restore();
+            //金星
+            cxt.save();
+            cxt.beginPath();
+            var g4=cxt.createRadialGradient(130,0,5,130,0,15);
+            g4.addColorStop(0,"#1f1315");
+            g4.addColorStop(1,"#c4bbac");
+             cxt.rotate(i*2*Math.PI/180);
+            cxt.arc(130,0,15,0,360*Math.PI/180,false);
+            cxt.fillStyle=g4;
+            cxt.closePath();
+            cxt.fill();
+            cxt.restore();
+            //轨道1
+            cxt.save();
+            cxt.beginPath();
+            cxt.strokeStyle="white";
+            cxt.arc(0,0,165,360*Math.PI/180,false);
+            cxt.stroke();
+            cxt.closePath();
+            cxt.restore();
+            //地球
+            cxt.save();
+            cxt.beginPath();
+            var g2=cxt.createRadialGradient(165,0,5,165,0,15);
+            g2.addColorStop(0,"#050c12");
+            g2.addColorStop(1,"#78b1e8");
+            cxt.rotate(i*3/2*Math.PI/180);
+            cxt.arc(165,0,15,0,360*Math.PI/180,false);
+            cxt.fillStyle=g2;
+            cxt.closePath();
+            cxt.fill();
+            cxt.restore();
+         //轨道1
+         cxt.save();
+         cxt.beginPath();
+         cxt.strokeStyle="white";
+         cxt.arc(0,0,200,360*Math.PI/180,false);
+         cxt.stroke();
+         cxt.closePath();
+         cxt.restore();
+         //火星
+         cxt.save();
+         cxt.beginPath();
+         var g5=cxt.createRadialGradient(200,0,10,200,0,18);
+         g5.addColorStop(0,"#76422D");
+         g5.addColorStop(1,"#CEC9B6");
+         cxt.rotate(i*3/4*Math.PI/180);
+         cxt.arc(200,0,18,0,360*Math.PI/180,false);
+         cxt.fillStyle=g5;
+         cxt.fill();
+         cxt.closePath();
+         cxt.restore();
+         //轨道1
+         cxt.save();
+         cxt.beginPath();
+         cxt.strokeStyle="white";
+         cxt.arc(0,0,230,360*Math.PI/180,false);
+         cxt.stroke();
+         cxt.closePath();
+         cxt.restore();
+         //木星
+         cxt.save();
+         cxt.beginPath();
+         var g6=cxt.createRadialGradient(230,0,5,230,0,12);
+         g6.addColorStop(0,"#322222");
+         g6.addColorStop(1,"#c0a48e");
+         cxt.rotate(i*6/49*Math.PI/180);
+         cxt.arc(230,0,12,0,360*Math.PI/180,false);
+         cxt.fillStyle=g6;
+         cxt.closePath();
+         cxt.fill();
+         cxt.restore();
+         //轨道1
+         cxt.save();
+         cxt.beginPath();
+         cxt.strokeStyle="white";
+         cxt.arc(0,0,250,360*Math.PI/180,false);
+         cxt.stroke();
+         cxt.closePath();
+         cxt.restore();
+         //土星
+         cxt.save();
+         cxt.beginPath();
+         var g7=cxt.createRadialGradient(250,0,5,250,0,8);
+         g7.addColorStop(0,"#5c4553");
+         g7.addColorStop(1,"#f7f9e3");
+         cxt.rotate(i*3/61*Math.PI/180);
+         cxt.arc(250,0,8,0,360*Math.PI/180,false);
+         cxt.fillStyle=g7;
+         cxt.closePath();
+         cxt.fill();
+         cxt.restore();
+         //轨道1
+         cxt.save();
+         cxt.beginPath();
+         cxt.strokeStyle="white";
+         cxt.arc(0,0,270,360*Math.PI/180,false);
+         cxt.stroke();
+         cxt.closePath();
+         cxt.restore();
+         //天王星
+         cxt.save();
+         cxt.beginPath();
+         var g8=cxt.createRadialGradient(270,0,5,270,0,10);
+         g8.addColorStop(0,"#19243a");
+         g8.addColorStop(1,"#a7e1e5");
+         cxt.rotate(i*3/175*Math.PI/180);
+         cxt.arc(270,0,10,0,360*Math.PI/180,false);
+         cxt.fillStyle=g8;
+         cxt.closePath();
+         cxt.fill();
+         cxt.restore();
+         //轨道1
+         cxt.save();
+         cxt.beginPath();
+         cxt.strokeStyle="white";
+         cxt.arc(0,0,300,360*Math.PI/180,false);
+         cxt.stroke();
+         cxt.closePath();
+         cxt.restore();
+         //海王星
+         cxt.save();
+         cxt.beginPath();
+         var g9=cxt.createRadialGradient(300,0,4,300,0,10);
+         g9.addColorStop(0,"#1e3b73");
+         g9.addColorStop(1,"#0661b2");
+         cxt.rotate(i*3/342*Math.PI/180);
+         cxt.arc(300,0,10,0,360*Math.PI/180,false);
+         cxt.fillStyle=g9;
+         cxt.closePath();
+         cxt.fill();
+         cxt.restore();
+        },30);
+
+
+    };
+</script>
+</head>
+<body>
+<canvas width="1366px" height="2000px" id="canvas" style="background:black;">
+您的浏览器版本较低，请升级。
+</canvas>
+</body>
+</html>

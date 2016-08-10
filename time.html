@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>时钟</title>
+    <script>
+        window.onload=function(){
+            var cvs=document.getElementById("canvas");
+            var cxt=cvs.getContext("2d");
+            cxt.translate(100,100);
+            setInterval(function(){
+                cxt.clearRect(-100,-100,800,800);
+                var date=new Date();
+                var hours=date.getHours();
+                var min=date.getMinutes();
+                var second=date.getSeconds();
+
+                //画一个时钟的原型；
+                cxt.beginPath();
+                cxt.lineWidth=2;
+                cxt.arc(200,200,150,0,360*Math.PI/180,false);
+                cxt.stroke();
+                cxt.closePath();
+
+                //等分12小时；
+                for(var i=0;i<12;i++)
+                {
+                    cxt.save();
+                    cxt.translate(200,200);
+                    cxt.lineWidth=5;
+                    cxt.strokeStyle="black";
+                    cxt.rotate(i*30*Math.PI/180);
+                    cxt.beginPath();
+                    cxt.moveTo(0,-130);
+                    cxt.lineTo(0,-150);
+                    cxt.closePath();
+                    cxt.stroke();
+                    cxt.restore();
+                }
+                //等分60分钟；
+                for(var j=0;j<60;j++)
+                {
+                    cxt.save();
+                    cxt.translate(200,200);
+                    cxt.lineWidth=2;
+                    cxt.strokeStyle="black";
+                    cxt.rotate(j*6*Math.PI/180);
+                    cxt.beginPath();
+                    cxt.moveTo(0,-140);
+                    cxt.lineTo(0,-150);
+                    cxt.closePath();
+                    cxt.stroke();
+                    cxt.restore();
+                }
+                //时针；
+                cxt.save();
+                cxt.translate(200,200);
+                cxt.lineWidth=7;
+                cxt.strokeStyle="pink";
+                cxt.rotate( 30*hours*Math.PI/180);
+                cxt.beginPath();
+                cxt.moveTo(0,15);
+                cxt.lineTo(0,-100);
+                cxt.closePath();
+                cxt.stroke();
+                cxt.restore();
+
+                //分针；
+                cxt.save();
+                cxt.translate(200,200);
+                cxt.lineWidth=5;
+                cxt.strokeStyle="blue";
+                cxt.rotate(6*min*Math.PI/180);
+                cxt.beginPath();
+                cxt.moveTo(0,15);
+                cxt.lineTo(0,-110);
+                cxt.closePath();
+                cxt.stroke();
+                cxt.restore();
+
+                //秒针；
+                cxt.save();
+                cxt.translate(200,200);
+                cxt.lineWidth=3;
+                cxt.strokeStyle="yellow";
+                cxt.rotate(second*6*Math.PI/180);
+                cxt.beginPath();
+                cxt.moveTo(0,15);
+                cxt.lineTo(0,-120);
+                cxt.stroke();
+                cxt.closePath();
+                //秒表中心的圈；
+                cxt.beginPath();
+                cxt.fillStyle="red";
+                cxt.arc(0,0,7,360*Math.PI/180,false);
+                cxt.fill();
+                cxt.stroke();
+               cxt.closePath();
+                //秒表顶部的圈；
+                cxt.beginPath();
+                cxt.fillStyle="red";
+                cxt.arc(0,-100,7,360*Math.PI/180,false);
+                cxt.fill();
+                cxt.stroke();
+                cxt.closePath();
+                cxt.restore();
+                //添加文字说明
+                cxt.beginPath();
+                cxt.strokeStyle="green";
+                cxt.font="italic 36px sans-serif";
+                var txt="当前时间："+hours+"时"+min+"分"+second+"秒";
+                cxt.fillText(txt,300,400);
+                cxt.strokeText(txt,300,400);
+            },1000);
+        };
+    </script>
+
+</head>
+<body>
+<canvas width="800" height="600" style="background:wheat;" id="canvas"></canvas>
+</body>
+</html>
